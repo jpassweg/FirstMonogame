@@ -9,6 +9,10 @@ namespace MyGame
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        Texture2D targetSprite;
+        Texture2D crosshairSprite;
+        Texture2D backgroundSprite;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -27,6 +31,10 @@ namespace MyGame
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            targetSprite = Content.Load<Texture2D>("target");
+            crosshairSprite = Content.Load<Texture2D>("crosshairs");
+            backgroundSprite = Content.Load<Texture2D>("sky");
+
             // TODO: use this.Content to load your game content here
         }
 
@@ -42,7 +50,11 @@ namespace MyGame
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.AntiqueWhite);
+
+            _spriteBatch.Begin();
+            _spriteBatch.Draw(backgroundSprite, new Vector2(0,0), Color.White);
+            _spriteBatch.End();
 
             // TODO: Add your drawing code here
 
